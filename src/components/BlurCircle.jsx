@@ -1,10 +1,16 @@
 import React from 'react'
 
-const BlurCircle = ({top='auto', right='auto',left='auto',bottom='auto'}) => {
+const BlurCircle = ({ top, left, right, bottom }) => {
   return (
-    <div className='absolute -z-50 h-58 w-58 aspect-square rounded-full bg-primary/30 blur-3xl' style={{top: top, right: right, left: left, bottom: bottom}}>
-      
-    </div>
+    <div
+      className="absolute -z-10 w-80 h-80 bg-primary/30 rounded-full blur-[140px] pointer-events-none"
+      style={{
+        top,
+        left,
+        right,
+        bottom
+      }}
+    />
   )
 }
 
