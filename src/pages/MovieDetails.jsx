@@ -5,6 +5,7 @@ import BlurCircle from '../components/BlurCircle'
 import { Heart, PlayCircleIcon, StarIcon } from 'lucide-react'
 import DateSelect from '../components/DateSelect' // Check filename casing!
 import MovieCard from '../components/MovieCard'
+import Loading from '../components/Loading'
 
 const MovieDetails = () => {
   const { id } = useParams()
@@ -16,10 +17,12 @@ const MovieDetails = () => {
     const foundShow = dummyShowsData.find(item => item.id === Number(id))
     
     if (foundShow) {
-      setShow({
-        movie: foundShow,
-        dateTime: dummyDateTimeData
-      })
+      
+        setShow({
+          movie: foundShow,
+          dateTime: dummyDateTimeData
+        })
+      
     }
   }
 
@@ -27,9 +30,9 @@ const MovieDetails = () => {
     getShow()
   }, [id])
 
-  if (!show) return <div className='text-white text-center pt-20'>Loading...</div>
+  // if (!show) return <div className='text-white text-center pt-20'>Loading...</div>
 
-  return (
+  return show ? (
     <div className='px-6 md:px-16 lg:px-40 pt-32 pb-20'>
       
       {/* Top Section: Poster & Info */}
@@ -129,7 +132,7 @@ const MovieDetails = () => {
 
 
     </div>
-  )
+  ) : (<Loading/>)
 }
 
 export default MovieDetails
